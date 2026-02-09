@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proposal ❤️</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+    .buttons {
+      position: relative;
+      width: 300px;
+      height: 200px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+    #no {
+      background-color: #999;
+      color: white;
+      position: absolute;
+    }
+    #photo-surprise {
+      display: none;
+      margin-top: 20px;
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .firework {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Would you Marry me?🫵🏼🥹❤️👑<br>If you Say No😮‍💨😤Don't dare</h1>
+
+<div class="buttons">
+  <button id="yes">YES</button>
+  <button id="no">NO</button>
+</div>
+
+<!-- Ta photo -->
+<img id="photo-surprise" src="mavie.jpg" alt="Photo surprise">
+
+<script>
+  const noButton = document.getElementById("no");
+  const yesButton = document.getElementById("yes");
+  const photo = document.getElementById("photo-surprise");
+
+  // Le bouton NO qui fuit
+  noButton.addEventListener("mouseover", () => {
+    const x = Math.random() * 200;
+    const y = Math.random() * 150;
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
+  });
+
+  // Quand il clique YES
+  yesButton.addEventListener("click", () => {
+    // Message OUI
+    alert("💖 OUIIIII 💖");
+
+    // Afficher la photo surprise
+    photo.style.display = "block";
+
+    // Feu d’artifice simple
+    for (let i=0; i<20; i++) {
+      const firework = document.createElement("div");
+      firework.classList.add("firework");
+      firework.style.width = firework.style.height = Math.random() * 15 + 5 + "px";
+      firework.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+      firework.style.left = Math.random() * window.innerWidth + "px";
+      firework.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(firework);
+
+      setTimeout(() => {
+        firework.remove();
+      }, 1500);
+    }
+  });
+</script>
+
+</body>
+</html>
